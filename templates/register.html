@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<title>Register - Expense Tracker</title>
+
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+<style>
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#11998e,#38ef7d);
+font-family:'Segoe UI',sans-serif;
+}
+
+.card{
+width:360px;
+border:none;
+border-radius:16px;
+padding:30px;
+box-shadow:0 15px 40px rgba(0,0,0,0.25);
+}
+
+.logo{
+font-size:26px;
+font-weight:600;
+text-align:center;
+margin-bottom:10px;
+}
+
+.subtitle{
+text-align:center;
+color:#666;
+margin-bottom:25px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<div class="logo">📝 Create Account</div>
+
+<p class="subtitle">Start tracking your expenses</p>
+
+<form method="POST">
+
+<div class="mb-3">
+<input
+type="text"
+name="username"
+placeholder="Username"
+class="form-control"
+required>
+</div>
+
+<div class="mb-3">
+<input
+type="password"
+name="password"
+placeholder="Password"
+class="form-control"
+required>
+</div>
+
+<button class="btn btn-success w-100">
+Register
+</button>
+
+</form>
+
+<div class="text-center mt-3">
+<span>Already have an account?</span>
+<a href="/login">Login</a>
+</div>
+
+</div>
+
+</body>
+</html>
