@@ -134,6 +134,32 @@ otherField.style.display = "none"
 
 </script>
 
+<script>
+
+function searchExpenses() {
+
+let input = document.getElementById("searchInput").value.toLowerCase()
+
+let table = document.getElementById("expenseTable")
+
+let rows = table.getElementsByTagName("tr")
+
+for (let i = 1; i < rows.length; i++) {
+
+let rowText = rows[i].textContent.toLowerCase()
+
+if (rowText.includes(input)) {
+rows[i].style.display = ""
+} else {
+rows[i].style.display = "none"
+}
+
+}
+
+}
+
+</script>
+
 <body>
 
 <div class="container mt-4">
@@ -277,7 +303,14 @@ Add Expense
 
 <h4>Expense History</h4>
 
-<table class="table table-hover">
+<input
+type="text"
+id="searchInput"
+placeholder="🔍 Search expenses..."
+class="form-control mb-3"
+onkeyup="searchExpenses()">
+
+<table class="table table-hover" id="expenseTable">
 
 <tr>
 
