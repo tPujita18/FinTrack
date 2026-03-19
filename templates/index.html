@@ -88,6 +88,14 @@ body.dark-mode .last-login {
     color: #ddd;
 }
 
+.card h6 {
+    font-size: 14px;
+    color: #777;
+}
+
+.card h3 {
+    font-weight: 600;
+}
 
 </style>
 
@@ -210,30 +218,39 @@ function filterExpenses() {
 </div>
 
 
-<div class="row mb-4">
+<div class="row mb-4 text-center">
 
-<div class="col-md-6">
+    <!-- Total -->
+    <div class="col-md-3">
+        <div class="card shadow p-3 h-100">
+            <h6>📊 Total Spending</h6>
+            <h3 class="text-danger">₹{{ total }}</h3>
+        </div>
+    </div>
 
-<div class="card shadow p-3">
+    <!-- This Month -->
+    <div class="col-md-3">
+        <div class="card shadow p-3 h-100">
+            <h6>📈 This Year</h6>
+            <h3 class="text-success">₹{{ yearly_total }}</h3>
+        </div>
+    </div>
 
-<h5>Total Spending</h5>
+    <!-- This Year -->
+    <div class="col-md-3">
+        <div class="card shadow p-3 h-100">
+            <h6>📅 This Month</h6>
+            <h3 class="text-primary">₹{{ monthly_total }}</h3>
+        </div>
+    </div>
 
-<h3 class="text-danger">₹{{ total }}</h3>
-
-</div>
-
-</div>
-
-
-<div class="col-md-6">
-
-<div class="card shadow p-3">
-
-<h5>This Month</h5>
-
-<h3 class="text-primary">₹{{ monthly_total }}</h3>
-
-</div>
+    <!-- Prediction -->
+    <div class="col-md-3">
+        <div class="card shadow p-3 h-100">
+            <h6>🔮 Next Month(Prediction)</h6>
+            <h3 class="text-warning">₹{{ prediction }}</h3>
+        </div>
+    </div>
 
 </div>
 

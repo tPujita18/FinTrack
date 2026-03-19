@@ -7,6 +7,31 @@ from flask import Flask, render_template, request, redirect, session, flash
 from flask import jsonify
 import csv
 from flask import Response
+from sklearn.linear_model import LinearRegression
+import numpy as np
+
+def predict_next_month(expenses):
+
+    if len(expenses) < 2:
+        return 0  # not enough data
+
+    X = []
+    y = []
+
+    for exp in expenses:
+        X.append([exp.date.month])
+        y.append(exp.amount)
+
+    X = np.array(X)
+    y = np.array(y)
+
+    model = LinearRegression()
+    model.fit(X, y)
+
+    next_month = (max([d[0] for d in X]) % 12) + 1
+    prediction = model.predict([[next_month]])
+
+    return round(float(prediction[0]), 2)
 
 app = Flask(__name__)
 
@@ -64,6 +89,7 @@ def index():
     yearly_total = sum(exp.amount for exp in expenses if exp.date.year == now.year)
 
     user = User.query.get(session['user_id'])
+    prediction = predict_next_month(expenses)
 
     return render_template(
         'index.html',
@@ -71,6 +97,7 @@ def index():
         total=total,
         monthly_total=monthly_total,
         yearly_total=yearly_total,
+        prediction=prediction,   # 👈 add this
         categories=list(category_totals.keys()),
         amounts=list(category_totals.values()),
         username=session.get('username'),
